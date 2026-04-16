@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interglobe Records · global sound</title>
+    <!-- Google Fonts & Font Awesome for clean icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0b0f;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #f0ede6;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HEADER / NAVIGATION */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 0 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .globe-icon {
+            font-size: 2.4rem;
+            color: #d4af37;
+            filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.3));
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: #d4af37;
+            font-weight: 500;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.8rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ccc9c1;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            padding: 3.5rem 0 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            color: #e6d7a3;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-highlight {
+            color: #d4af37;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #b7b3a8;
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #d4af37;
+            color: #0c0b0f;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+        }
+
+        .btn-primary:hover {
+            background: #c6a229;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #f0ede6;
+            border: 1px solid #3a373f;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        .hero-visual {
+            background: linear-gradient(145deg, #18161e 0%, #0f0e13 100%);
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #2a272f;
+            box-shadow: 0 25px 35px -8px rgba(0,0,0,0.7);
+        }
+
+        .vinyl-mock {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .track-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px dashed #3e3a44;
+            padding-bottom: 0.8rem;
+        }
+
+        .track-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .play-icon {
+            color: #d4af37;
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+        }
+
+        .track-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .track-artist {
+            color: #9a95a3;
+            font-size: 0.9rem;
+        }
+
+        .badge-new {
+            background: #d4af37;
+            color: #0c0b0f;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .globe-wave {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .wave-bar {
+            width: 6px;
+            height: 24px;
+            background: #d4af37;
+            border-radius: 20px;
+            opacity: 0.7;
+        }
+
+        /* FEATURED ARTISTS */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #d4af37;
+            font-size: 2rem;
+        }
+
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .artist-card {
+            background: #121116;
+            border-radius: 22px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            border: 1px solid #27232e;
+            transition: all 0.2s;
+        }
+
+        .artist-card:hover {
+            border-color: #d4af37;
+            background: #16131c;
+        }
+
+        .artist-avatar {
+            font-size: 3.4rem;
+            margin-bottom: 1.2rem;
+            color: #d4af37;
+        }
+
+        .artist-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .artist-genre {
+            color: #a6a0ae;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .artist-desc {
+            color: #bcb6c5;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .artist-link {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .artist-link i {
+            transition: transform 0.2s;
+        }
+
+        .artist-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* RELEASES / CATALOG */
+        .catalog-section {
+            background: #0f0d13;
+            border-radius: 32px;
+            padding: 2.8rem 2.5rem;
+            margin: 2.5rem 0 3rem;
+            border: 1px solid #26222b;
+        }
+
+        .release-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .release-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #2a2631;
+        }
+
+        .release-left {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .cover-icon {
+            background: #1d1923;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 1.6rem;
+            border: 1px solid #3c3745;
+        }
+
+        .release-info h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .release-meta {
+            color: #9c94a8;
+            font-size: 0.9rem;
+        }
+
+        .release-date {
+            color: #d4af37;
+            font-weight: 500;
+            background: #1e1a24;
+            padding: 0.3rem 1.1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* ABOUT + NEWSLETTER */
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2.5rem;
+            margin: 3rem 0 4rem;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-text p {
+            color: #bcb6c5;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .newsletter-card {
+            background: #131119;
+            border-radius: 28px;
+            padding: 2rem 2rem;
+            border: 1px solid #2d2836;
+        }
+
+        .newsletter-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-card p {
+            color: #aaa3b3;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            background: #1e1a24;
+            border: 1px solid #3d3747;
+            padding: 1rem 1.2rem;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #f0ede6;
+            outline: none;
+        }
+
+        .newsletter-form input:focus {
+            border-color: #d4af37;
+        }
+
+        .newsletter-form button {
+            background: #d4af37;
+            border: none;
+            padding: 1rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #0c0b0f;
+            transition: 0.15s;
+        }
+
+        .newsletter-form button:hover {
+            background: #bf9f30;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #201d25;
+            padding: 2.5rem 0 2rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: #918b9b;
+        }
+
+        .footer-copyright {
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: #bbb3c7;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #d4af37;
+        }
+
+        /* responsiveness */
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .artist-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-wrap {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            nav ul {
+                gap: 2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .release-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with navigation -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-globe-asia globe-icon"></i>
+                <div class="logo-text">INTERGLOBE <span>RECORDS</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Artists</a></li>
+                    <li><a href="#">Releases</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-headphones" style="margin-right: 8px;"></i> EST. 2024 · GLOBAL RHYTHMS</div>
+                <h1>Where <span class="hero-highlight">continents</span> collide in sound.</h1>
+                <p class="hero-description">
+                    Interglobe Records is an independent label bridging electronic, world fusion, and future beats. 
+                    Home to visionary producers and sonic explorers.
+                </p>
+                <div class="btn-group">
+                    <button class="btn-primary"><i class="fas fa-play" style="margin-right: 8px;"></i>Listen to latest</button>
+                    <button class="btn-outline"><i class="fas fa-compact-disc"></i> Explore catalog</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="vinyl-mock">
+                    <div class="track-row">
+                        <div class="track-info">
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <div>
+                                <div class="track-title">Aurora Drift</div>
+                                <div class="track-artist">LYRIA · Interglobe</div>
+                            </div>
+                        </div>
+                        <span class="badge-new">NEW</span>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info">
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <div>
+                                <div class="track-title">Desert Bloom</div>
+                                <div class="track-artist">SAND PHANTOM</div>
+                            </div>
+                        </div>
+                        <span class="badge-new">HOT</span>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info">
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <div>
+                                <div class="track-title">Orbit Six</div>
+                                <div class="track-artist">NOVA FREQ</div>
+                            </div>
+                        </div>
+                        <span>4:22</span>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-info">
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <div>
+                                <div class="track-title">Equator Line</div>
+                                <div class="track-artist">DJANGO MARU</div>
+                            </div>
+                        </div>
+                        <span>3:58</span>
+                    </div>
+                    <div class="globe-wave">
+                        <div class="wave-bar" style="height: 32px;"></div>
+                        <div class="wave-bar" style="height: 18px;"></div>
+                        <div class="wave-bar" style="height: 28px;"></div>
+                        <div class="wave-bar" style="height: 22px;"></div>
+                        <div class="wave-bar" style="height: 36px;"></div>
+                        <div class="wave-bar" style="height: 20px;"></div>
+                        <div class="wave-bar" style="height: 26px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Artists -->
+        <div>
+            <div class="section-title">
+                <i class="fas fa-microphone-alt"></i>
+                <span>Interglobe artists</span>
+            </div>
+            <div class="artist-grid">
+                <div class="artist-card">
+                    <div class="artist-avatar"><i class="fas fa-user-astronaut"></i></div>
+                    <h3>LYRIA</h3>
+                    <div class="artist-genre">Electronica / Ambient</div>
+                    <p class="artist-desc">Cinematic soundscapes with organic textures. Her EP 'Aurora' is out now.</p>
+                    <a href="#" class="artist-link">View artist <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-avatar"><i class="fas fa-user-ninja"></i></div>
+                    <h3>DJANGO MARU</h3>
+                    <div class="artist-genre">Afrohouse · Deep Tech</div>
+                    <p class="artist-desc">Percussive grooves from the south. "Equator Line" climbing charts.</p>
+                    <a href="#" class="artist-link">View artist <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-avatar"><i class="fas fa-user-circle"></i></div>
+                    <h3>SAND PHANTOM</h3>
+                    <div class="artist-genre">Downtempo / World</div>
+                    <p class="artist-desc">Mystical desert electronics. Featured on BBC Radio 6.</p>
+                    <a href="#" class="artist-link">View artist <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest releases catalog -->
+        <div class="catalog-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.8rem;">
+                <h2 style="font-size: 2rem; font-weight: 600;"><i class="fas fa-record-vinyl" style="margin-right: 14px; color: #d4af37;"></i>Recent releases</h2>
+                <a href="#" style="color:#d4af37; text-decoration: none;">View all <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="release-list">
+                <div class="release-item">
+                    <div class="release-left">
+                        <div class="cover-icon"><i class="fas fa-globe"></i></div>
+                        <div class="release-info">
+                            <h4>Interglobe Compilation Vol.1</h4>
+                            <div class="release-meta">Various Artists · 12 tracks</div>
+                        </div>
+                    </div>
+                    <div class="release-date">March 2026</div>
+                </div>
+                <div class="release-item">
+                    <div class="release-left">
+                        <div class="cover-icon"><i class="fas fa-meteor"></i></div>
+                        <div class="release-info">
+                            <h4>NOVA FREQ — Orbit Six EP</h4>
+                            <div class="release-meta">Future garage · IDM</div>
+                        </div>
+                    </div>
+                    <div class="release-date">February 2026</div>
+                </div>
+                <div class="release-item">
+                    <div class="release-left">
+                        <div class="cover-icon"><i class="fas fa-dharmachakra"></i></div>
+                        <div class="release-info">
+                            <h4>LYRIA · Tundra Echoes</h4>
+                            <div class="release-meta">Ambient · field recordings</div>
+                        </div>
+                    </div>
+                    <div class="release-date">January 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About + Newsletter -->
+        <div class="about-wrap">
+            <div class="about-text">
+                <h2><i class="fas fa-satellite" style="margin-right: 12px; color: #d4af37;"></i> Interglobe manifesto</h2>
+                <p>Founded by a collective of producers and DJs, Interglobe Records is a vessel for music without borders. We believe in cross‑pollination — from Sao Paulo basslines to Mongolian overtone chants, everything is material.</p>
+                <p>Our roster includes both emerging and established acts. We offer full label services, vinyl pressings, and a global digital distribution network. Every release is treated as a piece of art.</p>
+                <p style="margin-top: 1.4rem;"><i class="fas fa-map-pin" style="color: #d4af37;"></i> Berlin · Cape Town · Tokyo · Mexico City</p>
+            </div>
+            <div class="newsletter-card">
+                <h3>Join the orbit</h3>
+                <p>Get exclusive tracks, news, and first listens.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane" style="margin-right: 6px;"></i> Subscribe</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 1.2rem; opacity: 0.7;"><i class="fas fa-lock"></i> No spam, only vibrations.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-copyright">
+                <strong>INTERGLOBE RECORDS</strong> © 2026 — sound without borders.<br>
+                <span style="font-size:0.85rem;">info@intergloberecords.com</span>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="#" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Bandcamp"><i class="fab fa-bandcamp"></i></a>
+            </div>
+        </footer>
+    </div>
+    <!-- small interactive touch (just for fun) -->
+    <script>
+        (function(){
+            // simple console greeting — but also just makes the buttons feel interactive
+            console.log("🌍 Interglobe Records · transmitting from all time zones");
+            const btns = document.querySelectorAll('.btn-primary, .btn-outline, .newsletter-form button');
+            btns.forEach(b => {
+                b.addEventListener('click', (e) => {
+                    if(b.classList.contains('newsletter-form') || b.type === 'submit') {
+                        e.preventDefault();
+                        const input = document.querySelector('.newsletter-form input');
+                        if(input && input.value.trim() !== '') {
+                            alert(`✨ Thanks for subscribing, traveler. (demo)`);
+                            input.value = '';
+                        } else if (b.type === 'submit') {
+                            alert('🌐 Enter your email to join the Interglobe frequency.');
+                        }
+                    } else {
+                        e.preventDefault();
+                        // just a friendly demo message
+                        if(b.innerText.includes('Listen')) {
+                            alert('🔊 Now playing: Interglobe Compilation Vol.1 (demo mode)');
+                        } else if(b.innerText.includes('Explore')) {
+                            alert('📀 Full catalog available soon — stay tuned.');
+                        } else {
+                            // do nothing
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
